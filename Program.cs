@@ -7,8 +7,9 @@ namespace OOP_Exam
     {
         static void Main(string[] args)
         {
-            
-
+           Question question = new MCQ(4);
+            question.MakeQ();
+            Console.WriteLine(question);
            
 
         }

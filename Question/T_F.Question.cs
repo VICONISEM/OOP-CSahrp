@@ -20,8 +20,9 @@ namespace question
             };
         }
 
-
-
-
+        public override void MakeQ()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -28,12 +28,12 @@ namespace question
         }
 
 
-        public void MakeMCQ()
+        public override void MakeQ()
         {
 
-            Console.WriteLine("Enter Body Of MCQ Question :");
+            Console.Write("Enter Body Of MCQ Question :");
             string Body = Console.ReadLine();
-            this.BodyOfQ = Body;
+            BodyOfQ = Body;
             string AnswerText;
             for(int i=0;i<NumOfChoice;i++)
             {
@@ -43,6 +43,17 @@ namespace question
                     AnswerList[i] = new Answer(i + 1, AnswerText);
 
             }
+            AddRightChoice();
+            Console.Write("Enter Mark Of MCQ Question :");
+            int Mark;
+            bool flag;
+            do
+            {
+                Console.Write("Enter Mark Of MCQ Question :");
+                flag = int.TryParse(Console.ReadLine(), out Mark);
+
+            } while (!flag||Mark<=0);
+            this.MarkOfQ = Mark;
         }
         public void AddRightChoice()
         {
@@ -67,22 +78,22 @@ namespace question
                     Console.WriteLine("this Answer doesnt exsite!");
                 }
 
-            } while (!flag || (ID <= 0)||(ID>NumOfChoice));
+            } while (!flag);
 
         }
+        public override string ToString()
+        {
+            string Q;
+            Q = this.BodyOfQ;
+            Q += "\n";
+            foreach(var ans in AnswerList)
+            {
+                Q += ans.AnswerText + "    ";
 
-      
+            }
+            return Q;
 
-
-
-
-
-
-
-
-
-
-
+        }
 
 
     }

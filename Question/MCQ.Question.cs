@@ -17,8 +17,7 @@ namespace question
         public Answer RightAnswer
         {
             get{ return rightAnswer; }
-            set { rightAnswer = new Answer(value);}
-
+            
         }
 
         public MCQ(int NumOfChosse):base("Chose one answer Question")
@@ -32,8 +31,8 @@ namespace question
         {
 
             Console.Write("Enter Body Of MCQ Question :");
-            string Body = Console.ReadLine();
-            BodyOfQ = Body;
+            
+            this.BodyOfQ = Console.ReadLine()??"";
             string AnswerText;
             for(int i=0;i<NumOfChoice;i++)
             {
@@ -57,21 +56,19 @@ namespace question
         }
         public void AddRightChoice()
         {
-            Console.Write("Enter ID of right Choice");
+            
             int ID;
             bool flag;
 
             do
             {
+                Console.Write("Enter ID of right Choice");
                 flag = int.TryParse(Console.ReadLine(), out ID);
-                if(!flag)
-                {
-                    Console.WriteLine("Enter Valid ID");
-                }
+               
 
-                else if (AnswerList[ID--] != null)
+                if (AnswerList[--ID] != null)
                 {
-                    RightAnswer =new Answer(AnswerList[ID--]);
+                    rightAnswer =new Answer(AnswerList[--ID]);
                 }
                 else
                 {
@@ -85,10 +82,10 @@ namespace question
         {
             string Q;
             Q = this.BodyOfQ;
-            Q += "\n";
+            Q += $"     Mark ({this.MarkOfQ}) \n";
             foreach(var ans in AnswerList)
             {
-                Q += ans.AnswerText + "    ";
+                Q += ans.AnswerID.ToString()+" . "+ans.AnswerText + "    ";
 
             }
             return Q;

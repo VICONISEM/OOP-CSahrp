@@ -20,9 +20,52 @@ namespace question
             };
         }
 
+
+        public Answer RightAnswer
+        {
+            get { return rightAnswer; }
+        }
+
         public override void MakeQ()
         {
-            throw new NotImplementedException();
+            Console.Write("Enter Body Of Question :");
+            this.BodyOfQ = Console.ReadLine();
+           
+            bool flag;
+            int id;
+            int Mark;
+            do
+            {
+                Console.Write("Enter ID Of Right Answer(1:True|2:False): ");
+                flag = int.TryParse(Console.ReadLine(), out id);
+
+            } while (!flag||!(id>=1&&id<=2));
+            if(id==1)
+            {
+                rightAnswer = new Answer(1, "True");
+            }
+            else
+            {
+                rightAnswer = new Answer(2, "False");
+            }
+
+
+            do
+            {
+                Console.Write("Enter Mark Of Question : ");
+                flag = int.TryParse(Console.ReadLine(), out Mark);
+            } while (!flag||(Mark<=0));
+
+            this.MarkOfQ = Mark;
+
         }
+
+
+        public override string ToString()
+        {
+            return$"{this.BodyOfQ} (1:True|2:False)     Mark ({this.MarkOfQ})" ;
+        }
+
+
     }
 }

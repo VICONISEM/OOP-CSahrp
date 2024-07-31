@@ -84,6 +84,10 @@ namespace question
 
         #endregion
 
+
+        #region right_answer
+        #endregion
+
         public abstract void MakeQ();
       
 

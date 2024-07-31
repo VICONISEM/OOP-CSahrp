@@ -58,6 +58,10 @@ namespace question
             this.AnswerID = ans.AnswerID;
             this.AnswerText = ans.AnswerText;
         }
+        public override string ToString()
+        {
+            return$"{this.AnswerText}";
+        }
 
         #endregion
 

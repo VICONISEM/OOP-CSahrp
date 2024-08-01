@@ -56,6 +56,7 @@ namespace question
             } while (!flag||(Mark<=0));
 
             this.MarkOfQ = Mark;
+            Console.Clear();
 
         }
         #endregion

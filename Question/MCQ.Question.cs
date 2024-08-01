@@ -11,14 +11,7 @@ namespace question
     {
       private Answer[] AnswerList;
 
-      private Answer rightAnswer;
-
       private int NumOfChoice;
-        public Answer RightAnswer
-        {
-            get{ return rightAnswer; }
-            
-        }
 
         public MCQ(int NumOfChosse):base("Chose one answer Question")
         {
@@ -27,11 +20,13 @@ namespace question
         }
 
 
+       
+
+
         public override void MakeQ()
         {
 
             Console.Write("Enter Body Of MCQ Question :");
-            
             this.BodyOfQ = Console.ReadLine()??"";
             string AnswerText;
             for(int i=0;i<NumOfChoice;i++)
@@ -43,7 +38,6 @@ namespace question
 
             }
             AddRightChoice();
-            Console.Write("Enter Mark Of MCQ Question :");
             int Mark;
             bool flag;
             do
@@ -53,6 +47,7 @@ namespace question
 
             } while (!flag||Mark<=0);
             this.MarkOfQ = Mark;
+            Console.Clear();
         }
         public void AddRightChoice()
         {
@@ -62,20 +57,19 @@ namespace question
 
             do
             {
-                Console.Write("Enter ID of right Choice");
+                Console.Write("Enter ID of right Choice : ");
                 flag = int.TryParse(Console.ReadLine(), out ID);
                
+            } while (!flag||!(ID<=this.NumOfChoice));
 
-                if (AnswerList[--ID] != null)
-                {
-                    rightAnswer =new Answer(AnswerList[--ID]);
-                }
-                else
-                {
-                    Console.WriteLine("this Answer doesnt exsite!");
-                }
-
-            } while (!flag);
+            if (AnswerList[--ID] != null)
+            {
+                RightAnswer = new Answer(AnswerList[ID]);
+            }
+            else
+            {
+                Console.WriteLine("this Answer doesnt exsite!");
+            }
 
         }
         public override string ToString()

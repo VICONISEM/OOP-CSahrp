@@ -1,5 +1,6 @@
 ﻿using question;
-
+using exam;
+using subject;
 
 namespace OOP_Exam
 {
@@ -7,9 +8,26 @@ namespace OOP_Exam
     {
         static void Main(string[] args)
         {
-           Question question = new MCQ(4);
-            question.MakeQ();
-            Console.WriteLine(question);
+
+            int Id;
+            string Name;
+            bool flag;
+            Console.Write("Enter Name Of Subject : ");
+            Name = Console.ReadLine();
+
+
+
+            do
+            {
+                Console.Write("Enter ID Of Subject : ");
+                flag=int.TryParse(Console.ReadLine(), out Id );
+            } while (!flag);
+
+
+            Console.Clear();
+            Subject sub = new Subject(Id,Name);
+            sub.CreateExam();
+           
            
 
         }

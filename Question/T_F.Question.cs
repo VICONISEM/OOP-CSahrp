@@ -12,7 +12,6 @@ namespace question
        
         private Answer[] AnswerList;
 
-        private Answer rightAnswer;
         public T_F() : base("True Or False Question")
         {
             AnswerList = new Answer[2] { 
@@ -21,10 +20,7 @@ namespace question
         }
 
 
-        public Answer RightAnswer
-        {
-            get { return rightAnswer; }
-        }
+        
 
         public override void MakeQ()
         {
@@ -42,11 +38,11 @@ namespace question
             } while (!flag||!(id>=1&&id<=2));
             if(id==1)
             {
-                rightAnswer = new Answer(1, "True");
+                RightAnswer = new Answer(1, "True");
             }
             else
             {
-                rightAnswer = new Answer(2, "False");
+                RightAnswer = new Answer(2, "False");
             }
 
 

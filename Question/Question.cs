@@ -86,7 +86,16 @@ namespace question
 
 
         #region right_answer
+
+        private Answer rightAnswer;
+        public Answer RightAnswer
+        {
+            get { return rightAnswer; }
+            set { rightAnswer = value; }
+        }
         #endregion
+
+
 
         public abstract void MakeQ();
       

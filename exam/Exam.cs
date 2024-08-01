@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using question;
 
-namespace OOP_Exam.Exam
+namespace exam
 {
     public abstract class Exam
     {
@@ -24,10 +24,40 @@ namespace OOP_Exam.Exam
             get { return numberOfQuestion; }
             set { numberOfQuestion = value;}
         }
+        private int  markOfExam;
+        public int MarkOfExam
+        {
+            set { markOfExam = value;}
+            get { return markOfExam; }
+        }
 
 
-        public abstract void ShowExam();
+
+        private Question[] qs;
+
+
+        public Exam(int NumOfQ)
+        {
+            this.NumberOfQuestion = NumOfQ;
+            qs = new Question[this.NumberOfQuestion];
+            this.MarkOfExam = 0;
+        }
+        public Question[] QS
+        {
+            get { return qs; }
+        }
+        public Question this[int i]
+        {
+            get { return qs[i];}
+            set { qs[i] = value; }
+
+        }
+
+
+
+
         public abstract void MakeExam();
+        public abstract void ShowExam();
 
 
 

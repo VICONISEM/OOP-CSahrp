@@ -12,17 +12,19 @@ namespace OOP_Exam
             int Id;
             string Name;
             bool flag;
-            Console.Write("Enter Name Of Subject : ");
-            Name = Console.ReadLine();
+            do
+            {
+                Console.Write("Enter Name Of Subject : ");
+                Name = Console.ReadLine();
 
-
+            } while (string.IsNullOrEmpty(Name));
+           
 
             do
             {
                 Console.Write("Enter ID Of Subject : ");
                 flag=int.TryParse(Console.ReadLine(), out Id );
-            } while (!flag);
-
+            } while (!flag||!(Id>0));
 
             Console.Clear();
             Subject sub = new Subject(Id,Name);

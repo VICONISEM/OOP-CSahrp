@@ -9,33 +9,38 @@ namespace question
 {
     public class MCQ : Question
     {
-      private Answer[] AnswerList;
 
       private int NumOfChoice;
 
-        public MCQ(int NumOfChosse):base("Chose one answer Question")
+        public MCQ(int NumOfChosse):base("Choose the correct answer")
         {
             this.NumOfChoice = NumOfChosse;
             AnswerList=new Answer[NumOfChoice];
         }
 
 
-       
 
+        #region MakeQuestion
 
         public override void MakeQ()
         {
 
-            Console.Write("Enter Body Of MCQ Question :");
-            this.BodyOfQ = Console.ReadLine()??"";
+            do
+            {
+                Console.Write("Enter Body Of MCQ Question :");
+                this.BodyOfQ = Console.ReadLine();
+            } while (string.IsNullOrEmpty(this.BodyOfQ));
+           
             string AnswerText;
             for(int i=0;i<NumOfChoice;i++)
             {
-                Console.Write($"Enter the Choice Number{i + 1} : ");
-                
+                do
+                {
+                    Console.Write($"Enter the Choice Number{i + 1} : ");
                     AnswerText = Console.ReadLine();
-                    AnswerList[i] = new Answer(i + 1, AnswerText);
 
+                } while (string.IsNullOrEmpty(AnswerText));
+                AnswerList[i] = new Answer(i + 1, AnswerText);
             }
             AddRightChoice();
             int Mark;
@@ -45,10 +50,13 @@ namespace question
                 Console.Write("Enter Mark Of MCQ Question :");
                 flag = int.TryParse(Console.ReadLine(), out Mark);
 
-            } while (!flag||Mark<=0);
+            } while (!flag||!(Mark>0));
             this.MarkOfQ = Mark;
             Console.Clear();
         }
+        #endregion
+
+        #region AddRightChoice
         public void AddRightChoice()
         {
             
@@ -72,6 +80,8 @@ namespace question
             }
 
         }
+
+        #endregion
         public override string ToString()
         {
             string Q;

@@ -10,7 +10,7 @@ namespace question
     {
         #region Header_of_the_question
 
-        private string? headerOfQ;
+        private string headerOfQ;
         public string HeaderOfQ
         {
             get { return headerOfQ ?? " Header of Question can not find"; }
@@ -34,7 +34,7 @@ namespace question
         #endregion
 
         #region Body_of_the_question
-        private string? bodyOfQ;
+        private string bodyOfQ;
 
 
         public string BodyOfQ
@@ -43,7 +43,7 @@ namespace question
 
             set
             {
-                if (value is null)
+                if (value is null||value.GetType() != typeof(string))
                 {
                     Console.WriteLine("please enter valid body!");
                 }
@@ -84,7 +84,6 @@ namespace question
 
         #endregion
 
-
         #region right_answer
 
         private Answer rightAnswer;
@@ -94,6 +93,20 @@ namespace question
             set { rightAnswer = value; }
         }
         #endregion
+
+        #region AnswerList
+        private Answer[] answerList;
+
+        public Answer[] AnswerList
+        {
+            get { return answerList; }
+            set { answerList = value; }
+        }
+        #endregion
+
+
+
+
 
 
 

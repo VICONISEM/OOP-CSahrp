@@ -10,8 +10,6 @@ namespace question
     public class T_F : Question
     {
        
-        private Answer[] AnswerList;
-
         public T_F() : base("True Or False Question")
         {
             AnswerList = new Answer[2] { 
@@ -20,12 +18,17 @@ namespace question
         }
 
 
-        
 
+        #region MakeQuestion
         public override void MakeQ()
         {
-            Console.Write("Enter Body Of Question :");
-            this.BodyOfQ = Console.ReadLine();
+            do
+            {
+                Console.Write("Enter Body Of Question :");
+                this.BodyOfQ = Console.ReadLine();
+
+            } while (string.IsNullOrEmpty(this.BodyOfQ));
+           
            
             bool flag;
             int id;
@@ -55,7 +58,7 @@ namespace question
             this.MarkOfQ = Mark;
 
         }
-
+        #endregion
 
         public override string ToString()
         {

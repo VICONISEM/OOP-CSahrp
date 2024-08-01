@@ -16,7 +16,7 @@ namespace exam
             this.NumberOfQuestion = NumOfQ;
         }
 
-        
+        #region MakeExam
         public override void MakeExam()
         {
             bool Flag;
@@ -26,7 +26,7 @@ namespace exam
                 Console.Write("Enter Time Of Exam :");
                 Flag = int.TryParse(Console.ReadLine(), out Time);    
 
-            } while (!Flag);
+            } while (!Flag||!(Time>0));
             Console.Clear();
             this.TimeOfExam = Time;
 
@@ -39,19 +39,16 @@ namespace exam
                     Console.Write($"Enter Number of choices for question {i + 1}: ");
                     Flag = int.TryParse(Console.ReadLine(), out NumOfChoice);
 
-                } while (!Flag);
+                } while (!Flag||!(NumOfChoice>1));
 
                 QS[i] = new MCQ(NumOfChoice);
                 QS[i].MakeQ();
             
             }
-
-
-
-
-
         }
+        #endregion
 
+        #region ShowExam
         public override void ShowExam()
         {
             int GradeOfUser = 0;
@@ -82,7 +79,7 @@ namespace exam
                 Console.WriteLine($"{i+1} .{QS[i].BodyOfQ} ===>{QS[i].RightAnswer}");
             }
 
-
+            #endregion
 
 
 

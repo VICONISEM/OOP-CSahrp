@@ -12,7 +12,7 @@ namespace exam
         public Final(int NumOfQ) : base(NumOfQ)
         {
         }
-
+        #region MakeExam
         public override void MakeExam()
         {
             bool Flag;
@@ -22,7 +22,7 @@ namespace exam
                 Console.Write("Enter Time Of Exam :");
                 Flag = int.TryParse(Console.ReadLine(), out Time);
 
-            } while (!Flag);
+            } while (!Flag||!(Time>0));
             this.TimeOfExam = Time;
             Console.Clear();
 
@@ -61,8 +61,11 @@ namespace exam
             }
             
 
-
         }
+
+        #endregion
+
+        #region ShowExam
         public override void ShowExam()
         {
             int GradeOfUser = 0;
@@ -95,9 +98,7 @@ namespace exam
 
             Console.WriteLine($"You Get {GradeOfUser} of {this.MarkOfExam}");
 
-
-
-
+            #endregion
 
 
         }

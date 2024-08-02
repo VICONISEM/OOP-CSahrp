@@ -10,12 +10,11 @@ namespace question
     public class MCQ : Question
     {
 
-      private int NumOfChoice;
+      
 
-        public MCQ(int NumOfChosse):base("Choose the correct answer")
+        public MCQ(int NumOfChosse):base("Choose the correct answer", NumOfChosse)
         {
-            this.NumOfChoice = NumOfChosse;
-            AnswerList=new Answer[NumOfChoice];
+            AnswerList=new Answer[this.NumOfChoice];
         }
 
 
@@ -32,7 +31,7 @@ namespace question
             } while (string.IsNullOrEmpty(this.BodyOfQ));
            
             string AnswerText;
-            for(int i=0;i<NumOfChoice;i++)
+            for(int i=0;i<this.NumOfChoice;i++)
             {
                 do
                 {

@@ -10,9 +10,9 @@ namespace question
     public class T_F : Question
     {
        
-        public T_F() : base("True Or False Question")
+        public T_F() : base("True Or False Question",2)
         {
-            AnswerList = new Answer[2] { 
+            AnswerList = new Answer[] { 
             new Answer(1,"True"), new Answer(2,"False")  
             };
         }

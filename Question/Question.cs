@@ -73,15 +73,17 @@ namespace question
             }
 
         }
-        public Question(string Header)
+        #endregion
+
+        #region NumOfChoice
+        private int numOfChoice;
+
+
+        public int NumOfChoice
         {
-           this.HeaderOfQ = Header;
+            get { return numOfChoice; }
+            set { numOfChoice = value; }
         }
-
-
-
-
-
         #endregion
 
         #region right_answer
@@ -108,12 +110,13 @@ namespace question
 
 
 
-
+        public Question(string Header, int NumOfCh)
+        {
+           this.HeaderOfQ = Header;
+           this.NumOfChoice= NumOfCh;
+        }
 
         public abstract void MakeQ();
-      
-
-        
 
     }
 }

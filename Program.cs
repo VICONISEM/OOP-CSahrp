@@ -29,9 +29,7 @@ namespace OOP_Exam
             Console.Clear();
             Subject sub = new Subject(Id,Name);
             sub.CreateExam();
-           
-           
-
+            
         }
     }
 }
